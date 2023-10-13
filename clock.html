@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #aad7f6, #efe0a3, #87e1ac, #de75c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #digital-clock {
+            font-size: 100px; /* Increase font size */
+            color: #111211; /* Green text color */
+            margin: 20px; /* Add margin for positioning */
+        }
+    </style>
+</head>
+<body>
+    <div id="digital-clock"></div>
+    <script type="text/javascript">
+        function updateClock() {
+            const digitalClockElement = document.getElementById("digital-clock");
+
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            let amPm = "AM";
+
+            if (hours >= 12) {
+                amPm = "PM";
+                hours -= 12;
+            }
+
+            digitalClockElement.innerText = `${hours < 10 ? "0" : ""}${hours}:${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds} ${amPm}`;
+
+            setTimeout(updateClock, 1000);
+        }
+
+        updateClock();
+    </script>
+</body>
+</html>
